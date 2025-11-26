@@ -1,3 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+body {
+  @apply bg-gray-900 text-white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23333333'/%3E%3Cstop offset='100%25' stop-color='%23222222'/%3E%3C/linearGradient%3E%3Cpattern id='noise' width='100' height='100' patternContentUnits='userSpaceOnUse'%3E%3Crect width='100' height='100' fill='url(%23gradient)'/%3E%3Cimage xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5AUaEQ0L/K/WuwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUCC9g+0AAAHKSURBVHja7dpBDoAgEATg6v+/+mQ+iYihRzKzZZgKxW5+yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHM/yRzP8kcz/JHMA8GegwXEdvbwQAAAABJRU5ErkJggg==' width='100' height='100'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: cover;
+  @apply antialiased;
+}
 
+.glassmorphism {
+  @apply backdrop-blur-md bg-white/10 border-white/20 shadow-lg;
+}
 
+/* Example animation - Fade In */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Example animation - Slide Up */
+.slide-up {
+  animation: slideUp 0.5s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Example hover effect */
+.hover-effect {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-effect:hover {
+  transform: scale(1.05);
+}
