@@ -1,90 +1,69 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LucideIcon, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { LucideIcon, Github, Twitter, Instagram, Mail } from 'lucide-react';
 
 interface SocialLink {
   icon: LucideIcon;
   href: string;
-  label: string;
+  alt: string;
 }
 
-const socialLinks: SocialLink[] = [
-  {
-    icon: Facebook,
-    href: '#',
-    label: 'Facebook',
-  },
-  {
-    icon: Instagram,
-    href: '#',
-    label: 'Instagram',
-  },
-  {
-    icon: Twitter,
-    href: '#',
-    label: 'Twitter',
-  },
-  {
-    icon: Youtube,
-    href: '#',
-    label: 'YouTube',
-  },
-];
-
 const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks: SocialLink[] = [
+    { icon: Github, href: 'https://github.com/your-github', alt: 'GitHub' },
+    { icon: Twitter, href: 'https://twitter.com/your-twitter', alt: 'Twitter' },
+    { icon: Instagram, href: 'https://instagram.com/your-instagram', alt: 'Instagram' },
+    { icon: Mail, href: 'mailto:your@email.com', alt: 'Email' },
+  ];
+
   return (
-    <footer className="bg-gray-900 bg-[url('/noise.png')] text-white py-12 mt-24">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
+    <footer className="bg-gradient-to-br from-gray-900 to-black text-white py-12 mt-20 backdrop-blur-xl">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-col items-start">
             <h4 className="text-lg font-semibold mb-4">About Us</h4>
-            <p className="text-gray-400">We are a team dedicated to providing high-quality products and excellent customer service.</p>
+            <p className="text-sm text-gray-300">
+              We are a team of passionate developers creating amazing web experiences.
+            </p>
           </div>
-          <div>
+
+          <div className="flex flex-col items-start">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="text-gray-400">
+            <ul className="text-sm">
               <li>
-                <Link to="/" className="hover:text-white transition-colors duration-200">Home</Link>
+                <Link to="/" className="hover:text-primary transition-colors duration-200">Home</Link>
               </li>
               <li>
-                <Link to="/products" className="hover:text-white transition-colors duration-200">Products</Link>
+                <Link to="/products" className="hover:text-primary transition-colors duration-200">Products</Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-white transition-colors duration-200">Contact Us</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Legal</h4>
-            <ul className="text-gray-400">
-              <li>
-                <Link to="/privacy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link>
-              </li>
-              <li>
-                <Link to="/terms" className="hover:text-white transition-colors duration-200">Terms of Service</Link>
+                <Link to="/contact" className="hover:text-primary transition-colors duration-200">Contact</Link>
               </li>
             </ul>
           </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
+
+          <div className="flex flex-col items-start">
+            <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
-              {socialLinks.map((link) => (
+              {socialLinks.map((link, index) => (
                 <a
-                  key={link.label}
+                  key={index}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                  aria-label={link.label}
+                  className="text-gray-300 hover:text-primary transition-colors duration-200"
                 >
-                  <link.icon className="h-6 w-6" />
+                  <link.icon className="h-6 w-6" aria-label={link.alt} />
                 </a>
               ))}
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-700 pt-8 text-center text-gray-400">
-          &copy; {new Date().getFullYear()} BlackUI. All rights reserved.
+
+        <div className="mt-12 py-4 border-t border-gray-700 text-center text-sm text-gray-400">
+          &copy; {currentYear} Your Company. All rights reserved. | <Link to="/terms" className="hover:text-primary transition-colors duration-200">Terms of Service</Link> | <Link to="/privacy" className="hover:text-primary transition-colors duration-200">Privacy Policy</Link>
         </div>
       </div>
     </footer>
