@@ -1,72 +1,57 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { LucideIcon, Github, Twitter, Instagram, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-interface SocialLink {
-  icon: LucideIcon;
-  href: string;
-  alt: string;
-}
-
-const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks: SocialLink[] = [
-    { icon: Github, href: 'https://github.com/your-github', alt: 'GitHub' },
-    { icon: Twitter, href: 'https://twitter.com/your-twitter', alt: 'Twitter' },
-    { icon: Instagram, href: 'https://instagram.com/your-instagram', alt: 'Instagram' },
-    { icon: Mail, href: 'mailto:your@email.com', alt: 'Email' },
-  ];
+const Footer = () => {
+  const footerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeInOut' } },
+  };
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-black text-white py-12 mt-20 backdrop-blur-xl">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="flex flex-col items-start">
-            <h4 className="text-lg font-semibold mb-4">About Us</h4>
-            <p className="text-sm text-gray-300">
-              We are a team of passionate developers creating amazing web experiences.
-            </p>
-          </div>
-
-          <div className="flex flex-col items-start">
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="text-sm">
-              <li>
-                <Link to="/" className="hover:text-primary transition-colors duration-200">Home</Link>
-              </li>
-              <li>
-                <Link to="/products" className="hover:text-primary transition-colors duration-200">Products</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-primary transition-colors duration-200">Contact</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="flex flex-col items-start">
-            <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-4">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-primary transition-colors duration-200"
-                >
-                  <link.icon className="h-6 w-6" aria-label={link.alt} />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 py-4 border-t border-gray-700 text-center text-sm text-gray-400">
-          &copy; {currentYear} Your Company. All rights reserved. | <Link to="/terms" className="hover:text-primary transition-colors duration-200">Terms of Service</Link> | <Link to="/privacy" className="hover:text-primary transition-colors duration-200">Privacy Policy</Link>
-        </div>
+    <motion.footer
+      className="bg-gradient-to-br from-gray-900 to-black text-white py-12 px-6 md:px-12 lg:px-24"
+      variants={footerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <motion.div className="text-lg font-semibold hover:text-primary transition-colors duration-300"
+          whileHover={{ scale: 1.05 }}
+        >
+          BlackUI Dev
+        </motion.div>
+        <motion.nav className="flex space-x-4 md:space-x-6 lg:space-8"
+          variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { delay: 0.2, duration: 0.5 } } }}
+        >
+          <motion.a href="#" className="hover:text-primary transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+          >
+            About
+          </motion.a>
+          <motion.a href="#" className="hover:text-primary transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+          >
+            Services
+          </motion.a>
+          <motion.a href="#" className="hover:text-primary transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+          >
+            Products
+          </motion.a>
+          <motion.a href="#" className="hover:text-primary transition-colors duration-300"
+            whileHover={{ scale: 1.1 }}
+          >
+            Contact
+          </motion.a>
+        </motion.nav>
+        <motion.div className="text-sm text-gray-400"
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.5 } } }}
+        >
+          &copy; {new Date().getFullYear()} BlackUI Dev. All rights reserved.
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
